@@ -78,23 +78,6 @@ def long_description(*paths):
     '''
     result = ''
 
-    # attempt to import pandoc
-    try:
-        import pypandoc
-    except (ImportError, OSError), e:
-        print "Unable to import pypandoc - %s" % e
-        return result
-
-    # attempt md -> rst conversion
-    try:
-        for path in paths:
-            result += '\n' + pypandoc.convert(
-                path, 'rst', format='markdown'
-            )
-    except (OSError, IOError), e:
-        print "Failed to convert with pypandoc - %s" % e
-        return result
-
     return result
 
 
